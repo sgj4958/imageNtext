@@ -15,10 +15,10 @@
 </head>
 <body>
 
-	<svg viewBox="0 0 1280 960" width="640" height="480" id="texture">
+	<svg viewBox="0 0 1 1" width="100%" height="100%">
 		<filter id="필터">
-			<feImage href="fur_cloth.jpg" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="A" />
-			<feDisplacementMap in="SourceGraphic" in2="A" scale="20" xChannelSelector="R" yChannelSelector="R" result="B" />
+			<feImage href="" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="A" />
+			<feDisplacementMap in="SourceGraphic" in2="A" scale="100" xChannelSelector="R" yChannelSelector="R" result="B" />
 
 			<!-- 위치확인용 -->
 			<!-- <feMerge>
@@ -27,12 +27,17 @@
 			</feMerge> -->
 		</filter>
 
-		<image href="fur_cloth.jpg" x="0" y="0" width="100%" height="100%" />
-		<text x="700" y="600" font-size="50" filter="url(#필터)" fill="#333c" font-weight="bold" style="letter-spacing: -1px;">DALTT.</text>
+		<image href="" x="0" y="0" width="100%" height="100%" />
+		<!-- <text x="700" y="600" font-size="50" filter="url(#필터)" fill="#333c" font-weight="bold" style="letter-spacing: -1px;">DALTT.</text> -->
+		<text x="450" y="1000" font-size="80" filter="url(#필터)" fill="#333c" font-weight="bold" style="letter-spacing: -3px; transform: rotate(-7deg); transform-origin: 50% 50%;">NOBRAND</text>
 	</svg>
 
 </body>
 <script>
-
+	const src = "fluffy_fleece.png"
+	document.querySelectorAll("feImage, image").forEach(e => e.setAttribute("href", src))
+	const image = new Image()
+	image.src = src
+	image.onload = () => document.querySelector("svg").setAttribute("viewBox", `0 0 ${image.width} ${image.height}`)
 </script>
 </html>
